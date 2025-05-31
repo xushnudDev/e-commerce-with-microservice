@@ -20,6 +20,8 @@
     "test:e2e": "jest --config ./test/jest-e2e.json"
   },
   "dependencies": {
+    "@nestjs/class-transformer": "^0.4.0",
+    "@nestjs/class-validator": "^0.13.4",
     "@nestjs/common": "^11.0.1",
     "@nestjs/core": "^11.0.1",
     "@nestjs/mapped-types": "*",
@@ -28,6 +30,8 @@
     "@nestjs/sequelize": "^11.0.0",
     "amqp-connection-manager": "^4.1.14",
     "amqplib": "^0.10.8",
+    "class-transformer": "^0.5.1",
+    "class-validator": "^0.14.2",
     "mysql2": "^3.14.1",
     "pg": "^8.16.0",
     "pg-hstore": "^2.3.4",
