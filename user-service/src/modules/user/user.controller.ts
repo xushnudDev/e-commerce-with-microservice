@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Body, Patch, Param, Delete } from '@nestjs/common';
+import { Controller, Body } from '@nestjs/common';
 import { UserService } from './user.service';
 import { CreateUserDto } from './dto/create-user.dto';
 import { UpdateUserDto } from './dto/update-user.dto';
@@ -13,24 +13,25 @@ export class UserController {
     return this.userService.create(createUserDto);
   }
 
-
   @MessagePattern('find_all_users')
   findAll() {
     return this.userService.findAll();
   }
 
-  // @Get(':id')
-  // findOne(@Param('id') id: string) {
-  //   return this.userService.findOne(+id);
-  // }
+  @MessagePattern('find_one_user')
+  findOne(data: { id: number }) {
+    return this.userService.findOne(data.id);
+  }
 
-  // @Patch(':id')
-  // update(@Param('id') id: string, @Body() updateUserDto: UpdateUserDto) {
-  //   return this.userService.update(+id, updateUserDto);
-  // }
+  @MessagePattern('update_user')
+  update(data: { id: number; updateUserDto: UpdateUserDto }) {
+    return this.userService.update(data.id, data.updateUserDto);
+  }
 
-  // @Delete(':id')
-  // remove(@Param('id') id: string) {
-  //   return this.userService.remove(+id);
-  // }
+  @MessagePattern('delete_user')
+  remove(data: { id: number }) {
+    {
+      return this.userService.remove(data.id);
+    }
+  }
 }

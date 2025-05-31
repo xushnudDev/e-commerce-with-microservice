@@ -4,7 +4,7 @@ import {
   ClientProxyFactory,
   Transport,
 } from '@nestjs/microservices';
-import { CreateUserDto } from './dtos';
+import { CreateUserDto, UpdateUserDto } from './dtos';
 
 @Injectable()
 export class UserClient implements OnModuleInit {
@@ -29,5 +29,17 @@ export class UserClient implements OnModuleInit {
 
   findAllUsers() {
     return this.client.send('find_all_users', "");
-  }
+  };
+
+  findOneUser(id: number) {
+    return this.client.send('find_one_user', { id });
+  };
+
+  updateUser(id: number, updateUserDto: UpdateUserDto) {
+    return this.client.send('update_user', { id, updateUserDto });
+  };
+
+  deleteUser(id: number) {
+    return this.client.send('delete_user', { id });
+  };
 }
